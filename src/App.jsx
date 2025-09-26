@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export default function App() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [list, setList] = useState([]);
+  const navigate = useNavigate();
 
   const handleSubmit = async () => {
     await axios.post("http://localhost:5000/api/add", { name, phone });
@@ -25,18 +27,9 @@ export default function App() {
   return (
     <div style={{ padding: "20px", fontFamily: "sans-serif" }}>
       <h1>Landing Page</h1>
-      <input
-        placeholder="Enter Name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        style={{ margin: "5px" }}
-      />
-      <input
-        placeholder="Enter Phone"
-        value={phone}
-        onChange={(e) => setPhone(e.target.value)}
-        style={{ margin: "5px" }}
-      />
+      <button onClick={() => navigate("/fullList")}>Next Page</button>
+      <input placeholder="Enter Name" value={name} onChange={(e) => setName(e.target.value)} style={{ margin: "5px" }} />
+      <input placeholder="Enter Phone" value={phone} onChange={(e) => setPhone(e.target.value)} style={{ margin: "5px" }} />
       <button onClick={handleSubmit}>Save</button>
 
       <h2>Existing Users</h2>
