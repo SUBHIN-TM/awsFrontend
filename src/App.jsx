@@ -8,7 +8,6 @@ export default function App() {
   const [list, setList] = useState([]);
   const navigate = useNavigate();
 const url = import.meta.env.VITE_API_URL;
-console.log("API URL:", url);
 
   const handleSubmit = async () => {
     await axios.post(`${url}/api/add`, { name, phone });
