@@ -8,6 +8,8 @@ export default function App() {
   const [list, setList] = useState([]);
   const navigate = useNavigate();
   const url=process.env.REACT_APP_API_URL;
+  console.log("API URL:", process.env.REACT_APP_API_URL);
+
   const handleSubmit = async () => {
     await axios.post(`${url}/api/add`, { name, phone });
     setName("");
