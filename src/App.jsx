@@ -7,16 +7,16 @@ export default function App() {
   const [phone, setPhone] = useState("");
   const [list, setList] = useState([]);
   const navigate = useNavigate();
-
+  const url=process.env.REACT_APP_API_URL;
   const handleSubmit = async () => {
-    await axios.post("http://localhost:5000/api/add", { name, phone });
+    await axios.post(`${url}/api/add`, { name, phone });
     setName("");
     setPhone("");
     fetchList();
   };
 
   const fetchList = async () => {
-    const res = await axios.get("http://localhost:5000/api/list");
+    const res = await axios.get(`${url}/api/list`);
     setList(res.data);
   };
 
